@@ -3,6 +3,7 @@
 
 const rollup = require('rollup');
 const nodeResolve = require('rollup-plugin-node-resolve');
+const commonjs = require('rollup-plugin-commonjs');
 const path = require('path');
 const fs = require('fs');
 
@@ -109,5 +110,6 @@ module.exports = {
   plugins: [TMPL_additional_plugins].concat([
     {resolveId: resolveBazel},
     nodeResolve({jsnext: true, module: true}),
+    commonjs(),
   ])
 }
