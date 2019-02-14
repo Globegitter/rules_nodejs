@@ -126,7 +126,7 @@ def _npm_install_impl(repository_ctx):
     no_opt = ["--no-optional"]
 
     if repository_ctx.attr.prod_only:
-        npm_args.append("--production")
+        npm_args.append(["--production"] + [" --no-optional"])
 
     # The entry points for npm install for osx/linux and windows
     if not is_windows:
@@ -139,7 +139,7 @@ set -e
 """.format(
                 root = repository_ctx.path(""),
                 npm = repository_ctx.path(npm),
-                npm_args = " ".join(npm_args, no_opt),
+                npm_args = " ".join(npm_args),
             ),
             executable = True,
         )
@@ -151,7 +151,7 @@ cd "{root}" && "{npm}" {npm_args}
 """.format(
                 root = repository_ctx.path(""),
                 npm = repository_ctx.path(npm),
-                npm_args = " ".join(npm_args, no_opt),
+                npm_args = " ".join(npm_args),
             ),
             executable = True,
         )
