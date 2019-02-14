@@ -585,7 +585,6 @@ function flattenDependencies(pkg, dep, pkgsMap) {
           }
           // dependency not found
           if (required) {
-            console.error(`Try to do something!!!`);
             console.error(`Could not find ${depType} '${targetDep}' of '${dep._dir}'`);
             process.exit(1);
           }
