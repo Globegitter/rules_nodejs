@@ -122,7 +122,7 @@ def _npm_install_impl(repository_ctx):
     is_windows = os_name(repository_ctx).find("windows") != -1
     node = repository_ctx.path(get_node_label(repository_ctx))
     npm = get_npm_label(repository_ctx)
-    npm_args = ["install"]
+    npm_args = ["install", "--no-optional"]
 
     if repository_ctx.attr.prod_only:
         npm_args.extend(["--production", "--no-optional"])
