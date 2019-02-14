@@ -129,7 +129,7 @@ def _npm_install_impl(repository_ctx):
 
     # The entry points for npm install for osx/linux and windows
     if not is_windows:
-        npm_args.append("--no-optional")
+        npm_args.extend("--no-optional")
         repository_ctx.file(
             "npm",
             content = """#!/usr/bin/env bash
@@ -144,7 +144,7 @@ set -e
             executable = True,
         )
     else:
-        npm_args.append("--no-optional")
+        npm_args.extend("--no-optional")
         repository_ctx.file(
             "npm.cmd",
             content = """@echo off
