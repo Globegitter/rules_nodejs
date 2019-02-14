@@ -125,8 +125,8 @@ def _npm_install_impl(repository_ctx):
     npm_args = ["install"]
 
     if repository_ctx.attr.prod_only:
-        npm_args.append("--production --no-optional")
-#        npm_args.append( )
+        npm_args.append("--production")
+        npm_args.extend("--no-optional")
 
     # The entry points for npm install for osx/linux and windows
     if not is_windows:
